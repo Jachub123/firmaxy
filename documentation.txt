@@ -1,0 +1,30 @@
+1. anlegen einer neuen app (BSP: testApp)
+	$ python manage.py startapp <appname>
+	BSP: 
+	$ python manage.py startapp testApp
+
+2. im hauptprojekt in der settings.py Datei unter INSTALLED_APPS die neue APP hinzufügen:
+	<namederapp>.apps.<namederappMitGroßbuchstabe>Config
+	BSP:
+	testApp.apps.TestAppConfig
+3. Neue App als index festlegen: Dazu in urls.py ersteinmal "include"-Funktionalität importieren:
+	from django.urls import path, include
+   dann:
+   immernoch in urls.py innerhalb von urlpatterns[] neuen path anlegen, der auf unsere gewünschte Mainpage zeigt:
+	path('', include(namederapp.urls))
+	BSP:
+	path('', include(testApp.urls))
+4. im Verzeichnis der neuen App ursl.py Datei anlegen mit Inhalt:
+	from django.urls import path
+	from . import views
+	urlpatterns = [
+		path('', views.index name='index')
+	]
+5. im Verzeichnis der neuen App templates Ordner anlegen, dort index.html anlegen:
+	<h1>Test</h1>
+6. in views.py wechseln und die view für unsere index.html Datei erstellen:
+	def index(request):
+	    return render(request, 'index.html', {})
+7. server neu starten:
+	$ python manage.py runserver
+	localhost:8000 sollte jetzt die index.html angezeigt werden.
