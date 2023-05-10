@@ -9,8 +9,9 @@
     <title>Document</title>
   </head>
   <body>
-    {%include 'navbar.html'%} {%block content%}
-    <h1>HALLOOOO</h1>
-    {%endblock%}
+    {%include 'navbar.html'%}
+    <div class="teststyle">
+      <h1>{%block content%}HALLOOOO{%endblock content%}</h1>
+    </div>
   </body>
 </html>
