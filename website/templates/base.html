@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{%static 'website/style.css' %}" />
+    <link rel="stylesheet" href="{%static 'website/bild.css' %}" />
     <title>Document</title>
   </head>
   <body>
     {%include 'navbar.html'%}
-    <div class="teststyle">
-      <h1>{%block content%}HALLOOOO{%endblock content%}</h1>
-    </div>
+    <header>
+      <h1>{%block headerText%}HALLOOOO{%endblock headerText%}</h1>
+      <img src="{%block headerBild%}{%endblock headerBild%}"/>
+    </header>
   </body>
 </html>
