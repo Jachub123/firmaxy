@@ -2,5 +2,8 @@
 {%block headerText%}{{b.width}}{%endblock headerText%}
 {%block headerBild%}{{bild}}{%endblock headerBild%}
 {%block content%} neuer h1er tag text <h1>index h1</h1>
-
+{% if delete_id != "none" %}
+<a href="/delete/{{delete_id}}">DELETE</a>
+{% else %}<h1>HA NOI NOI... ALLES G'LÖSCHT<h1>
+{% endif %}
 <p>{{breite}}</p>{%endblock content%}

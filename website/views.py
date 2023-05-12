@@ -7,24 +7,43 @@ from django.db import connection
 
 # Create your views here.
 def index(request):
-    bild = Bilder.objects.get(area="header2")
-    image = Image.open(bild.image)
+    bild = Bilder.objects.all()
+    image = Image.open(bild[0].image)
     height = image.height
     height = str(height)
 
-    c = Bilder.objects.all()
-    b = Bilder.objects.filter(width = "200")
+    b = Bilder.objects.all()
+    #b = Bilder.objects.get(area = "header2")
+    
     print(connection.queries)
+    print( "b")
+    print(b)
     cssFile = open("./website/static/website/bild.css", "w")
     cssFile.write("header{height:"+height+"px;}")
     context = {
-        "bild" : bild.image,
+        "bild" : bild[3].image,
         "height" : height,
-        "b" : b,
+        "b" : b[3],
+        "delete_id": b[3].area,
     }
     return render(request, 'index.html', context)
+
+def delete(request, delete_id):
+    context = { "delete_id" : "none"}
+    if delete_id != "none":
+        b = Bilder.objects.get(area = delete_id)
+        b.delete()
+
+    print("delete_id")
+    print(delete_id)
+
+    return render(request, 'index.html', context)
 def about(request):
-    return render(request, 'about.html', {})
+    bild = Bilder.objects.get(area="about")
+    context = {
+        "bild": bild.image,
+    }
+    return render(request, 'about.html', context)
 def galerie(request):
 
     bild = Bilder.objects.get(area="galerie")
