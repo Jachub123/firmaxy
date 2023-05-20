@@ -10,11 +10,29 @@
     <title>Document</title>
   </head>
   <body>
-    {%include 'navbar.html'%}
-    <header>
-      <h1>{%block headerText%}HALLOOOO{%endblock headerText%}</h1>
-      <img src="{%block headerBild%}{%endblock headerBild%}"/>
+    <div class="mainHomeImg">
+      <div class="colostripes">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="sidebarColor">
+        <header>{%include 'navbar.html'%}</header>
+      </div>
+      <div class="sidebarColor2"></div>
+      <div class="containerHeadline">
+        <h1 class="headerIntro">{%block headerIntro%}HALLOOOO{%endblock headerIntro%}</h1>
+        <h1 class="name">{%block headerText%}HALLOOOO{%endblock headerText%}</h1>
+        <div class="evita">
+          <h1 class="firstH1 overlay">{%block headerText4%}Nonnenmacher {%endblock headerText4%}</h1>
+          <h1 class="firstH1 border">{%block headerText2%}HALLOOOO{%endblock headerText2%}</h1>
+          <h1 class="firstH1 secondH1">{%block headerText3%}HALLOOOO{%endblock headerText3%}</h1>
+        </div>
+      </div>
+
+      <img class="homeImg" src="{%block headerBild%}{%endblock headerBild%}" />
       {% block content %}{% endblock content %}
-    </header>
+    </div>
   </body>
 </html>

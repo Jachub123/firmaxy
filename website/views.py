@@ -7,24 +7,22 @@ from django.db import connection
 
 # Create your views here.
 def index(request):
-    bild = Bilder.objects.all()
-    image = Image.open(bild[0].image)
+    bild = Bilder.objects.get(area="Startseite-Hauptbild")
+    image = Image.open(bild.image)
     height = image.height
-    height = str(height)
+    width = image.width
+    #height = str(height)
 
     b = Bilder.objects.all()
     #b = Bilder.objects.get(area = "header2")
     
-    print(connection.queries)
-    print( "b")
-    print(b)
-    cssFile = open("./website/static/website/bild.css", "w")
-    cssFile.write("header{height:"+height+"px;}")
+#    print(connection.queries)
+#    print( "b")
+#    print(b)
+#    cssFile = open("./website/static/website/bild.css", "w")
+#    cssFile.write("header{height:"+height+"px;}")
     context = {
-        "bild" : bild[3].image,
-        "height" : height,
-        "b" : b[3],
-        "delete_id": b[3].area,
+        "homeBild" : bild.image,
     }
     return render(request, 'index.html', context)
 
