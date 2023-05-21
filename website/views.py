@@ -2,11 +2,22 @@ from django.shortcuts import render
 from .models import *
 from PIL import Image
 from PIL.ExifTags import TAGS
-from django.conf import settings
-from django.db import connection
+from django.views.generic import TemplateView
 
 # Create your views here.
+class Themes(TemplateView):
+    template_name = 'static/website/style.css'
+    content_type='text/css'
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['color'] = "red"
+        return self.render_to_response(context)
+
+""" def css(request):
+
+    return render(request, 'index.html', context) """
 def index(request):
+    farbe = Farben.objects.get(area="Hintergrund")
     bild = Bilder.objects.get(area="Startseite-Hauptbild")
     image = Image.open(bild.image)
     height = image.height
@@ -23,6 +34,7 @@ def index(request):
 #    cssFile.write("header{height:"+height+"px;}")
     context = {
         "homeBild" : bild.image,
+        "farbe" : farbe.farbcode,
     }
     return render(request, 'index.html', context)
 

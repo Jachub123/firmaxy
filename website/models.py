@@ -14,3 +14,14 @@ class Bilder(models.Model):
 
     def __str__(self):
         return self.area
+    
+class Farben(models.Model):
+    area = models.CharField(max_length = 20, primary_key=True, verbose_name="area")
+    farbcode = models.CharField(max_length = 20, verbose_name="farbcode")
+    
+    class Meta:
+        verbose_name = "Farbe"
+        verbose_name_plural = "Farben"
+
+    def __str__(self):
+        return self.area

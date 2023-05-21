@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{%static 'website/style.css' %}" />
+    {% comment %}
     <link rel="stylesheet" href="{%static 'website/bild.css' %}" />
+    {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% url 'theme-variables' %}" />
+    {% block addStyle %}{% endblock addStyle %}
     <title>Document</title>
   </head>
   <body>
