@@ -2,29 +2,48 @@ from django.shortcuts import render
 from .models import *
 from PIL import Image
 from PIL.ExifTags import TAGS
-from django.views.generic import TemplateView
+from django.views.generic.base import TemplateView
+from django.core.management import call_command
 
 # Create your views here.
-class Themes(TemplateView):
-    template_name = 'static/website/style.css'
-    content_type='text/css'
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        context['color'] = "red"
-        return self.render_to_response(context)
 
-""" def css(request):
+def variables():
+    hintergrund = Farben.objects.get(area="Hintergrund")
+    fontAcryl = Farben.objects.get(area="Head1_Schrift_Acryl")
+    headVorname = Farben.objects.get(area="Head2_Schrift_Evita")
+    headNachname2 = Farben.objects.get(area="Head4_Schrift_Nonne2")
+    navLinks = Farben.objects.get(area="Navbar_Verlinkungen")
+    stripe1 = navLinks
+    stripe2 = fontAcryl
+    stripe3 = headVorname
+    stripe4 = Farben.objects.get(area="farbstrich_bildFarbe")
 
-    return render(request, 'index.html', context) """
-def index(request):
-    farbe = Farben.objects.get(area="Hintergrund")
     bild = Bilder.objects.get(area="Startseite-Hauptbild")
-    image = Image.open(bild.image)
-    height = image.height
-    width = image.width
+    context = {
+    "homeBild" : bild.image,
+    "farbeHintergrund" : hintergrund.farbcode,
+    "farbeIntro" : fontAcryl.farbcode,
+    "farbeHeadVorname" : headVorname.farbcode,
+    "farbeHeadNachnameOverlay" : hintergrund.farbcode,
+    "farbeHeadNachname" : headNachname2.farbcode,
+    "farbeNavLinks" : navLinks.farbcode,
+    "farbeStripe1" : stripe1.farbcode,
+    "farbeStripe2" : stripe2.farbcode,
+    "farbeStripe3" : stripe3.farbcode,
+    "farbeStripe4" : stripe4.farbcode,
+    }
+    return context
+
+def index(request):
+    context = variables()
+    navLinks = Farben.objects.get(area="Navbar_Verlinkungen")
+    #image = Image.open(bild.image)
+    #height = image.height
+    #width = image.width
+
     #height = str(height)
 
-    b = Bilder.objects.all()
+    #b = Bilder.objects.all()
     #b = Bilder.objects.get(area = "header2")
     
 #    print(connection.queries)
@@ -32,11 +51,8 @@ def index(request):
 #    print(b)
 #    cssFile = open("./website/static/website/bild.css", "w")
 #    cssFile.write("header{height:"+height+"px;}")
-    context = {
-        "homeBild" : bild.image,
-        "farbe" : farbe.farbcode,
-    }
     return render(request, 'index.html', context)
+    
 
 def delete(request, delete_id):
     context = { "delete_id" : "none"}
@@ -49,10 +65,7 @@ def delete(request, delete_id):
 
     return render(request, 'index.html', context)
 def about(request):
-    bild = Bilder.objects.get(area="about")
-    context = {
-        "bild": bild.image,
-    }
+    context = variables()
     return render(request, 'about.html', context)
 def galerie(request):
 

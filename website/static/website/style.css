@@ -57,7 +57,6 @@ h4 {
 
 body {
   padding: 0.5rem 1rem;
-  background-color: {{color}};
   margin: 0;
 }
 
@@ -90,7 +89,6 @@ h1 {
 .headerIntro {
   font-weight: lighter;
   font-size: clamp(1.5rem, 8vw, 2.5rem);
-  color: #645e40;
   margin-bottom: -1.2rem;
   margin-top: 0;
   padding: 2rem 0 1rem 0;
@@ -102,7 +100,6 @@ h1 {
 
 .evita .overlay {
   top: 0;
-  background-color: #fefcef;
   width: 100%;
 }
 
@@ -113,7 +110,6 @@ h1 {
   overflow: hidden;
   height: 60%;
   z-index: 1;
-  color: #fefcef;
   margin: 0;
   font-family: Comfortaa-Light;
   font-size: clamp(2rem, 8vw, 5rem);
@@ -131,8 +127,6 @@ h1 {
 
 .secondH1 {
   position: static;
-  color: #d7ce94;
-  filter: drop-shadow(1px 1px 0 #fefcef);
 }
 
 .colostripes {
@@ -141,9 +135,6 @@ h1 {
   justify-content: flex-end;
 }
 
-.sidebarColor a {
-  color: #b14b4b;
-}
 .sidebarColor {
   grid-row: 1/7;
   grid-column: 1/2;
@@ -156,18 +147,7 @@ h1 {
   height: 1.2rem;
 }
 
-.colostripes div:first-child {
-  background-color: #b14b4b;
-}
-.colostripes div:nth-child(2) {
-  background-color: #ffd63f;
-}
-.colostripes div:nth-child(3) {
-  background-color: #000000;
-}
-.colostripes div:nth-child(4) {
-  background-color: #d1b85b;
-}
+
 .evita {
   position: relative;
   transform: translateY(40%);

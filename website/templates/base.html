@@ -9,29 +9,28 @@
     {% comment %}
     <link rel="stylesheet" href="{%static 'website/bild.css' %}" />
     {% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% url 'theme-variables' %}" />
-    {% block addStyle %}{% endblock addStyle %}
+    
     <title>Document</title>
   </head>
-  <body>
+  <body style="{% block addBodyStyle %}background-color:{{farbeHintergrund}}{% endblock addBodyStyle %}">
     <div class="mainHomeImg">
       <div class="colostripes">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div style="background-color:{{farbeStripe1}};"></div>
+        <div style="background-color:{{farbeStripe2}};"></div>
+        <div style="background-color:{{farbeStripe3}};"></div>
+        <div style="background-color:{{farbeStripe4}};"></div>
       </div>
       <div class="sidebarColor">
         <header>{%include 'navbar.html'%}</header>
       </div>
       <div class="sidebarColor2"></div>
       <div class="containerHeadline">
-        <h1 class="headerIntro">{%block headerIntro%}HALLOOOO{%endblock headerIntro%}</h1>
-        <h1 class="name">{%block headerText%}HALLOOOO{%endblock headerText%}</h1>
+        <h1 style="color:{{farbeIntro}};" class="headerIntro">{%block headerIntro%}HALLOOOO{%endblock headerIntro%}</h1>
+        <h1 style="color:{{farbeHeadVorname}};" class="name">{%block headerText%}HALLOOOO{%endblock headerText%}</h1>
         <div class="evita">
-          <h1 class="firstH1 overlay">{%block headerText4%}Nonnenmacher {%endblock headerText4%}</h1>
-          <h1 class="firstH1 border">{%block headerText2%}HALLOOOO{%endblock headerText2%}</h1>
-          <h1 class="firstH1 secondH1">{%block headerText3%}HALLOOOO{%endblock headerText3%}</h1>
+          <h1 style="background-color: {{farbeHeadNachnameOverlay}}; color: {{farbeHeadNachnameOverlay}}" class="firstH1 overlay">{%block headerText4%}Nonnenmacher {%endblock headerText4%}</h1>
+          <h1 style="color: {{farbeHintergrund}};" class="firstH1 border">{%block headerText2%}HALLOOOO{%endblock headerText2%}</h1>
+          <h1 style="color: {{farbeHeadNachname}}; filter: drop-shadow(1px 1px 0 {{farbeHintergrund}});" class="firstH1 secondH1">{%block headerText3%}HALLOOOO{%endblock headerText3%}</h1>
         </div>
       </div>
 
