@@ -101,10 +101,21 @@ nav span{
   }
 }
 
+@keyframes colorchange {
+
+  50%{
+    color:rgb(109, 235, 193);
+  }
+  100% {
+    color:rgb(61, 165, 255);
+  }
+}
+
 nav a {    
   display: block;
   width: fit-content;
   text-decoration: none;
+  transition: 0s color ease 0.4s;
 }
 
 .linkcontainer{
@@ -115,8 +126,13 @@ nav a {
   overflow: hidden;
 }
 
+nav a:hover {
+  animation: 0.4s ease-out colorchange;
+  color:rgb(61, 165, 255)
+}
+
 nav a:hover + span{
-  animation: borderflow 0.75s;  
+  animation: 0.4s borderflow ease;  
 }
 
 nav {
