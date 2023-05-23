@@ -1,8 +1,8 @@
 {%block content%}
 <style>nav a {color:{{farbeNavLinks}}}</style>
 <nav>
-  <a href="{%url 'index'%}">Home</a>
-  <a href="{%url 'about'%}">About</a>
-  <a href="{%url 'galerie'%}">Galerie</a>
+  <div class="linkcontainer"><a href="{%url 'index'%}">Home</a><span></span></div>
+  <div class="linkcontainer"><a href="{%url 'about'%}">About</a><span></span></div>
+  <div class="linkcontainer"><a href="{%url 'galerie'%}">Galerie</a><span></span></div>
 </nav>
 {%endblock%}

@@ -72,10 +72,54 @@ header {
   padding: 1rem;
 }
 
-nav {
+nav span{  
+  display: block;
+  width: 0px;    
+  border-bottom: 1px solid;
+  height: 1px;
+  
+}
+
+@keyframes borderflow {
+  0% {
+    width: 0%;
+    align-self: flex-start;
+  }
+  50%{
+    width: 100%;
+    align-self: flex-start;
+  }
+  51%{
+    width: 100%;
+    align-self: flex-end;
+  }
+
+
+  100% {
+    width: 0%;
+    align-self: flex-end;
+  }
+}
+
+nav a {    
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.linkcontainer{
   display: flex;
   flex-flow: column;
-  row-gap: 1.25rem;
+  margin-top: 1.25rem;
+  width: fit-content;
+  overflow: hidden;
+}
+
+nav a:hover + span{
+  animation: borderflow 0.75s;  
+}
+
+nav {
   font-size: 17px;
   font-family: louis-normal;
 }
