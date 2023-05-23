@@ -21,10 +21,10 @@ def index(request):
     cssFile = open("./website/static/website/bild.css", "w")
     cssFile.write("header{height:"+height+"px;}")
     context = {
-        "bild" : bild[3].image,
+        "bild" : bild[0].image,
         "height" : height,
-        "b" : b[3],
-        "delete_id": b[3].area,
+        "b" : b[0],
+        "delete_id": b[0].area,
     }
     return render(request, 'index.html', context)
 
