@@ -20,6 +20,8 @@ def variables():
 
     bild = Bilder.objects.get(area="Startseite-Hauptbild")
     context = {
+    "colorVars" :":root{ --colorTextgrad1: "+headVorname.farbcode+"; --colorTextgrad2: "+stripe4.farbcode+"; --initialLinkColor: "+navLinks.farbcode+";}",
+    
     "homeBild" : bild.image,
     "farbeHintergrund" : hintergrund.farbcode,
     "farbeIntro" : fontAcryl.farbcode,
