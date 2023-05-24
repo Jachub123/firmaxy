@@ -101,7 +101,6 @@ nav span{
 }
 
 @keyframes colorchange {
-<<<<<<< HEAD
   0% {
     background-image: linear-gradient(90deg, var(--colorTextgrad1) 0%, var(--initialLinkColor) 30%);
     -webkit-text-fill-color: transparent; 
@@ -186,14 +185,6 @@ nav span{
     background-image: linear-gradient(90deg, var(--colorTextgrad2) 48%, var(--colorTextgrad1) 64%);
     -webkit-text-fill-color: transparent; 
     -moz-text-fill-color: transparent;
-=======
-
-  50%{
-    color:rgb(109, 235, 193);
-  }
-  100% {
-    color:rgb(61, 165, 255);
->>>>>>> c70d9985f1ebf3930abf773c5a5ff29f77600de3
   }
 }
 
@@ -201,13 +192,9 @@ nav a {
   display: block;
   width: fit-content;
   text-decoration: none;
-<<<<<<< HEAD
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
-=======
-  transition: 0s color ease 0.4s;
->>>>>>> c70d9985f1ebf3930abf773c5a5ff29f77600de3
 }
 
 .linkcontainer{
@@ -218,7 +205,6 @@ nav a {
   overflow: hidden;
 }
 
-<<<<<<< HEAD
 nav a:hover{
   animation: 0.5s colorchange;
   background-image: linear-gradient(90deg, var(--colorTextgrad2) 48%, var(--colorTextgrad1) 70%);
@@ -229,15 +215,6 @@ nav a:hover + span{
   animation: borderflow 0.5s;  
   width: 35%;
   align-self: flex-end;
-=======
-nav a:hover {
-  animation: 0.4s ease-out colorchange;
-  color:rgb(61, 165, 255)
-}
-
-nav a:hover + span{
-  animation: 0.4s borderflow ease;  
->>>>>>> c70d9985f1ebf3930abf773c5a5ff29f77600de3
 }
 
 nav {
