@@ -18,11 +18,11 @@ def variables():
     stripe3 = headVorname
     stripe4 = Farben.objects.get(area="farbstrich_bildFarbe")
 
-    bild = Bilder.objects.get(area="Startseite-Hauptbild")
+    #bild = Bilder.objects.get(area="Startseite-Hauptbild")
     context = {
     "colorVars" :":root{ --colorTextgrad1: "+headVorname.farbcode+"; --colorTextgrad2: "+stripe4.farbcode+"; --initialLinkColor: "+navLinks.farbcode+";}",
     
-    "homeBild" : bild.image,
+    #"homeBild" : bild.image,
     "farbeHintergrund" : hintergrund.farbcode,
     "farbeIntro" : fontAcryl.farbcode,
     "farbeHeadVorname" : headVorname.farbcode,

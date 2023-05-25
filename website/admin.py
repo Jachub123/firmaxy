@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Bilder)
 admin.site.register(Farben)
+admin.site.register(Galerie)
