@@ -2,8 +2,6 @@ from django.shortcuts import render
 from .models import *
 from PIL import Image
 from PIL.ExifTags import TAGS
-from django.views.generic.base import TemplateView
-from django.core.management import call_command
 
 # Create your views here.
 
@@ -11,33 +9,45 @@ def variables():
     hintergrund = Farben.objects.get(area="Hintergrund")
     fontAcryl = Farben.objects.get(area="Head1_Schrift_Acryl")
     headVorname = Farben.objects.get(area="Head2_Schrift_Evita")
+    headNachname = Farben.objects.get(area="Head4_Schrift_Nonne")
     headNachname2 = Farben.objects.get(area="Head4_Schrift_Nonne2")
     navLinks = Farben.objects.get(area="Navbar_Verlinkungen")
+    navLinksGradient1 = Farben.objects.get(area="Farbverlauf_Farbe1")
+    navLinksGradient2 = Farben.objects.get(area="Farbverlauf_Farbe2")
     stripe1 = navLinks
     stripe2 = fontAcryl
     stripe3 = headVorname
     stripe4 = Farben.objects.get(area="farbstrich_bildFarbe")
 
-    bild = Bilder.objects.get(area="Startseite-Hauptbild")
+    HomeBild = BilderFestlegen.objects.get(area="HP")
+    AboutMebild = BilderFestlegen.objects.get(area="AM")
     context = {
-    "colorVars" :":root{ --colorTextgrad1: "+headVorname.farbcode+"; --colorTextgrad2: "+stripe4.farbcode+"; --initialLinkColor: "+navLinks.farbcode+";}",
+    "colorVars" :":root{ --colorTextgrad1: #"+headVorname.farbcode+"; --colorTextgrad2: #"+stripe4.farbcode+"; --initialLinkColor: #"+navLinks.farbcode+";}",
     
-    "homeBild" : bild.image,
-    "farbeHintergrund" : hintergrund.farbcode,
-    "farbeIntro" : fontAcryl.farbcode,
-    "farbeHeadVorname" : headVorname.farbcode,
-    "farbeHeadNachnameOverlay" : hintergrund.farbcode,
-    "farbeHeadNachname" : headNachname2.farbcode,
-    "farbeNavLinks" : navLinks.farbcode,
-    "farbeStripe1" : stripe1.farbcode,
-    "farbeStripe2" : stripe2.farbcode,
-    "farbeStripe3" : stripe3.farbcode,
-    "farbeStripe4" : stripe4.farbcode,
+    "homeBild" : HomeBild.image,
+    "AboutMebild" : AboutMebild.image,
+    "farbeHintergrund" : "#"+hintergrund.farbcode,
+    "farbeIntro" : "#"+fontAcryl.farbcode,
+    "farbeHeadVorname" : "#"+headVorname.farbcode,
+    "farbeHeadNachnameOverlay" : "#"+hintergrund.farbcode,
+    "farbeHeadNachnameOben" : "#"+headNachname.farbcode,
+    "farbeHeadNachname" : "#"+headNachname2.farbcode,
+    "farbeNavLinks" : "#"+navLinks.farbcode,
+    "farbeNavLinksGradient1" : "#"+navLinksGradient1.farbcode,
+    "farbeNavLinksGradient2" : "#"+navLinksGradient2.farbcode,
+    "farbeStripe1" : "#"+stripe1.farbcode,
+    "farbeStripe2" : "#"+stripe2.farbcode,
+    "farbeStripe3" : "#"+stripe3.farbcode,
+    "farbeStripe4" : "#"+stripe4.farbcode,
     }
     return context
 
 def index(request):
+    
     context = variables()
+    context["HeadTextClass"] = "HomeHeadText"
+    context["HeadImgClass"] = "homeImg"
+    context["home"] = True
     navLinks = Farben.objects.get(area="Navbar_Verlinkungen")
     #image = Image.open(bild.image)
     #height = image.height
@@ -59,7 +69,7 @@ def index(request):
 def delete(request, delete_id):
     context = { "delete_id" : "none"}
     if delete_id != "none":
-        b = Bilder.objects.get(area = delete_id)
+        b = BilderFestlegen.objects.get(area = delete_id)
         b.delete()
 
     print("delete_id")
@@ -68,10 +78,13 @@ def delete(request, delete_id):
     return render(request, 'index.html', context)
 def about(request):
     context = variables()
+    context["HeadTextClass"] = "AboutHeadText"
+    context["HeadImgClass"] = "AboutHeadImg"
+    context["about"] = True
     return render(request, 'about.html', context)
 def galerie(request):
 
-    bild = Bilder.objects.get(area="galerie")
+    bild = BilderFestlegen.objects.get(area="galerie")
 
     context = {
         "bild": bild.image,

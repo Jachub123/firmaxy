@@ -3,9 +3,9 @@ from . import views
 from .models import *
 
 farbe = Farben.objects.get(area="Hintergrund")
-bild = Bilder.objects.get(area="Startseite-Hauptbild")
+#bild = BilderFestlegen.objects.get(area="Startseite-Hauptbild")
 context = {
-    "homeBild" : bild.image,
+    #"homeBild" : bild.image,
     "farbe" : farbe.farbcode,
     }
 urlpatterns = [

@@ -3,13 +3,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      description="Acrylkunst, Acryl Bilder aus Stuttgart, Farbenfrohe Acrylmalerei auf Leinwand - Evita Nonnenmacher"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{%static 'website/style.css' %}" />
     {% comment %}
     <link rel="stylesheet" href="{%static 'website/bild.css' %}" />
     {% endcomment %}
-    <style>{{colorVars}}</style>
+    <style>
+      {{colorVars}}
+        nav a {color:{{farbeNavLinks}}}
+        :root {
+          --colorTextgrad1: {{farbeNavLinksGradient1}};
+          --colorTextgrad2: {{farbeNavLinksGradient2}};
+      }
+    </style>
     <title>Document</title>
   </head>
   <body style="{% block addBodyStyle %}background-color:{{farbeHintergrund}}{% endblock addBodyStyle %}">
@@ -20,21 +29,33 @@
         <div style="background-color:{{farbeStripe3}};"></div>
         <div style="background-color:{{farbeStripe4}};"></div>
       </div>
-      <div class="sidebarColor">
-        <header>{%include 'navbar.html'%}</header>
-      </div>
+      <header>{%include 'navbar.html'%}</header>
       <div class="sidebarColor2"></div>
-      <div class="containerHeadline">
-        <h1 style="color:{{farbeIntro}};" class="headerIntro">{%block headerIntro%}HALLOOOO{%endblock headerIntro%}</h1>
-        <h1 style="color:{{farbeHeadVorname}};" class="name">{%block headerText%}HALLOOOO{%endblock headerText%}</h1>
+      <div class="{{HeadTextClass}}">
+        {% if about == True %} {% endif %} {% if home == True %}
+        <h1 style="color:{{farbeIntro}};" class="headerIntro">{%block headerIntro%}{%endblock headerIntro%}</h1>
+        <h1 style="color:{{farbeHeadVorname}};" class="name">{%block headerText%}{%endblock headerText%}</h1>
+        {% endif %}
         <div class="evita">
-          <h1 style="background-color: {{farbeHeadNachnameOverlay}}; color: {{farbeHeadNachnameOverlay}}" class="firstH1 overlay">{%block headerText4%}Nonnenmacher {%endblock headerText4%}</h1>
-          <h1 style="color: {{farbeHintergrund}};" class="firstH1 border">{%block headerText2%}HALLOOOO{%endblock headerText2%}</h1>
-          <h1 style="color: {{farbeHeadNachname}}; filter: drop-shadow(1px 1px 0 {{farbeHintergrund}});" class="firstH1 secondH1">{%block headerText3%}HALLOOOO{%endblock headerText3%}</h1>
+          <h1
+            style="background-color: {{farbeHeadNachnameOverlay}}; color: {{farbeHeadNachnameOverlay}}"
+            class="firstH1 overlay"
+          >
+            {%block headerText4%}Nonnenmacher {%endblock headerText4%}
+          </h1>
+          <h1 style="color: {{farbeHeadNachnameOben}};" class="firstH1 border">
+            {%block headerText2%}{%endblock headerText2%}
+          </h1>
+          <h1
+            style="color: {{farbeHeadNachname}}; filter: drop-shadow(1px 1px 0 {{farbeHintergrund}});"
+            class="firstH1 secondH1"
+          >
+            {%block headerText3%}{%endblock headerText3%}
+          </h1>
         </div>
       </div>
 
-      <img class="homeImg" src="{%block headerBild%}{%endblock headerBild%}" />
+      <img class="{{HeadImgClass}}" src="{%block headerBild%}{%endblock headerBild%}" />
       {% block content %}{% endblock content %}
     </div>
   </body>
