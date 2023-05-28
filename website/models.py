@@ -24,7 +24,7 @@ class BilderFestlegen(models.Model):
         return self.name
     
 class Farben(models.Model):
-    area = models.CharField(max_length = 20, primary_key=True, verbose_name="area")
+    area = models.CharField(max_length = 20, verbose_name="area", primary_key=True)
     farbcode = models.CharField(max_length = 20, verbose_name="farbcode")
     
     class Meta:
@@ -33,3 +33,16 @@ class Farben(models.Model):
 
     def __str__(self):
         return self.area
+    
+class Galerie(models.Model):
+    name = models.CharField(max_length = 20, verbose_name="Bildname", primary_key=True)
+    image = models.ImageField(null=False, verbose_name="Bild", upload_to="images/galerie")
+    höhe = models.IntegerField(verbose_name="Höhe")
+    breite = models.IntegerField(verbose_name="Breite")
+
+    class Meta:
+        verbose_name = "Galerie"
+        verbose_name_plural = "Galerie-Bilder"
+
+    def __str__(self):
+        return self.name
