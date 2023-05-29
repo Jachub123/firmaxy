@@ -1,13 +1,15 @@
-{%extends 'base.html' %} {%block headerText2%}über mich {%endblock headerText2%} {%block headerText4%}über mich
-{%endblock headerText4%} {%block headerText3%} über mich{%endblock headerText3%} {%block headerBild%}{{AboutMebild}}
-{%endblock headerBild%} {%block content%}
+{%extends 'base.html' %} {%block headerIntro%}Stuttgarter Kunst{%endblock headerIntro%} {%block headerText2%}Meine Kunst
+{%endblock headerText2%} {%block headerText4%}Meine Kunst {%endblock headerText4%} {%block headerText3%} Meine
+Kunst{%endblock headerText3%} {%block headerBild%}{{AboutMebild}} {%endblock headerBild%} {%block content%}
 <section class="text">
   <h3>Biografische Daten</h3>
   <article class="bio">
+    {%load multifor%} {% for head in CV1Head; text in CV1 %}
     <div class="bio">
-      <h4>1952</h4>
-      in Heidelberg geboren
+      <h4>{{head}}</h4>
+      {{text }}
     </div>
+    {% endfor %} {% comment %}
     <div class="bio">
       <h4>1971-76</h4>
       Grafik- Design Studium Pforzheim
@@ -33,6 +35,7 @@
       <h4>2000</h4>
       Arbeit als Künstlerin und Kunsttherapeutin
     </div>
+    {% endcomment %}
   </article>
 </section>
 {%endblock content%}

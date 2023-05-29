@@ -77,7 +77,22 @@ def delete(request, delete_id):
 
     return render(request, 'index.html', context)
 def about(request):
+    CV1 = Texte.objects.get(textfeld="Lebenslauf-Station1")
+    headline = []
+    text = []
+    CV1 = CV1.text.split("\n")
+    for index, wort in enumerate(CV1):
+        if index % 2 == 0:
+            headline.append(wort)
+        else:
+            text.append(wort)
+    print("headline")
+    print(headline)
+    print("text")
+    print(text)
     context = variables()
+    context["CV1Head"] = headline
+    context["CV1"] = text
     context["HeadTextClass"] = "AboutHeadText"
     context["HeadImgClass"] = "AboutHeadImg"
     context["about"] = True

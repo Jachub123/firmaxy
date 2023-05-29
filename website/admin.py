@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 
 #admin.site.register(BilderFestlegen)
 admin.site.register(Farben)
+admin.site.register(Texte)
 
 class MyModelAdminForm(forms.ModelForm):
     class Meta:

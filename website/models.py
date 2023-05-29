@@ -34,15 +34,13 @@ class Farben(models.Model):
     def __str__(self):
         return self.area
     
-class Galerie(models.Model):
-    name = models.CharField(max_length = 20, verbose_name="Bildname", primary_key=True)
-    image = models.ImageField(null=False, verbose_name="Bild", upload_to="images/galerie")
-    höhe = models.IntegerField(verbose_name="Höhe")
-    breite = models.IntegerField(verbose_name="Breite")
-
+class Texte(models.Model):
+    textfeld = models.CharField(max_length = 25, verbose_name="text-Feld", primary_key=True)
+    text = models.TextField(max_length = 1000, verbose_name="text")
+    
     class Meta:
-        verbose_name = "Galerie"
-        verbose_name_plural = "Galerie-Bilder"
+        verbose_name = "Text"
+        verbose_name_plural = "Texte"
 
     def __str__(self):
-        return self.name
+        return self.textfeld

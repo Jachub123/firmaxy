@@ -32,10 +32,10 @@
       <header>{%include 'navbar.html'%}</header>
       <div class="sidebarColor2"></div>
       <div class="{{HeadTextClass}}">
-        {% if about == True %} {% endif %} {% if home == True %}
+        {% if about == True %} {% endif %}
         <h1 style="color:{{farbeIntro}};" class="headerIntro">{%block headerIntro%}{%endblock headerIntro%}</h1>
         <h1 style="color:{{farbeHeadVorname}};" class="name">{%block headerText%}{%endblock headerText%}</h1>
-        {% endif %}
+        {% if home == True %} {% endif %}
         <div class="evita">
           <h1
             style="background-color: {{farbeHeadNachnameOverlay}}; color: {{farbeHeadNachnameOverlay}}"

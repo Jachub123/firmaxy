@@ -19,10 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         nameField.value = "StartBild";
       } else if (areaField.value === "AM") {
         nameField.value = "ÜbermichBild";
-      } else if (areaField.value === "AMSL") {
-        nameField.value = "ÜbermichBildkleinL";
-      } else if (areaField.value === "AMSR") {
-        nameField.value = "ÜbermichBildkleinR";
       }
       nameField.parentElement.parentElement.classList.add("hidden");
       heightField.parentElement.parentElement.parentElement.classList.add("hidden");
