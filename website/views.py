@@ -41,12 +41,27 @@ def variables():
     "farbeStripe4" : "#"+stripe4.farbcode,
     }
     return context
+    
+def textmaker(dbText):
+    headline = []
+    text = []
+    dbText = dbText.split("\n")
+    for index, wort in enumerate(dbText):
+        if index % 2 == 0:
+            headline.append(wort)
+        else:
+            text.append(wort)
+    return zip(headline, text)
 
 def index(request):
+    h1 = Texte.objects.get(textfeld="Startseite-Überschrift")
+    homeText = Texte.objects.get(textfeld="Startseite-Text")
     
     context = variables()
     context["HeadTextClass"] = "HomeHeadText"
     context["HeadImgClass"] = "homeImg"
+    context["h1"] = h1
+    context["text"] = textmaker(homeText.text)
     context["home"] = True
     navLinks = Farben.objects.get(area="Navbar_Verlinkungen")
     #image = Image.open(bild.image)
@@ -77,22 +92,11 @@ def delete(request, delete_id):
 
     return render(request, 'index.html', context)
 def about(request):
-    CV1 = Texte.objects.get(textfeld="Lebenslauf-Station1")
-    headline = []
-    text = []
-    CV1 = CV1.text.split("\n")
-    for index, wort in enumerate(CV1):
-        if index % 2 == 0:
-            headline.append(wort)
-        else:
-            text.append(wort)
-    print("headline")
-    print(headline)
-    print("text")
-    print(text)
+    CV1 = Texte.objects.get(textfeld="Übermich-Text")
+    
+    aboutText = textmaker(CV1.text)
     context = variables()
-    context["CV1Head"] = headline
-    context["CV1"] = text
+    context["aboutText"] = aboutText
     context["HeadTextClass"] = "AboutHeadText"
     context["HeadImgClass"] = "AboutHeadImg"
     context["about"] = True

@@ -1,41 +1,15 @@
-{%extends 'base.html' %} {%block headerIntro%}Stuttgarter Kunst{%endblock headerIntro%} {%block headerText2%}Meine Kunst
+{%extends 'base.html' %}{%block headerIntro%}Stuttgarter Kunst{%endblock headerIntro%} {%block headerText2%}Meine Kunst
 {%endblock headerText2%} {%block headerText4%}Meine Kunst {%endblock headerText4%} {%block headerText3%} Meine
 Kunst{%endblock headerText3%} {%block headerBild%}{{AboutMebild}} {%endblock headerBild%} {%block content%}
 <section class="text">
   <h3>Biografische Daten</h3>
   <article class="bio">
-    {%load multifor%} {% for head in CV1Head; text in CV1 %}
+    {% for head, text in aboutText %}
     <div class="bio">
       <h4>{{head}}</h4>
       {{text }}
     </div>
-    {% endfor %} {% comment %}
-    <div class="bio">
-      <h4>1971-76</h4>
-      Grafik- Design Studium Pforzheim
-    </div>
-    <div class="bio">
-      <h4>1980-83</h4>
-      Ausbildung Ergotherapie
-    </div>
-
-    <div class="bio">
-      <h4>1990-99</h4>
-      Ausbildung zur Kunst-und Gestaltungstherapeutin
-    </div>
-    <div class="bio">
-      <h4>1992</h4>
-      Geburt des Sohnes
-    </div>
-    <div class="bio">
-      <h4>1995-99</h4>
-      Eigene Praxis für Ergo- und Gestaltungstherapie
-    </div>
-    <div class="bio">
-      <h4>2000</h4>
-      Arbeit als Künstlerin und Kunsttherapeutin
-    </div>
-    {% endcomment %}
+    {% endfor %}
   </article>
 </section>
 {%endblock content%}

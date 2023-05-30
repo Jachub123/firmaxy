@@ -36,7 +36,7 @@ class Farben(models.Model):
     
 class Texte(models.Model):
     textfeld = models.CharField(max_length = 25, verbose_name="text-Feld", primary_key=True)
-    text = models.TextField(max_length = 1000, verbose_name="text")
+    text = models.TextField(max_length = 2000, verbose_name="text")
     
     class Meta:
         verbose_name = "Text"
