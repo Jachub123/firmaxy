@@ -1,4 +1,5 @@
 {%load static%}
+{% load customFilters %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,7 +20,7 @@
           --colorTextgrad2: {{farbeNavLinksGradient2}};
       }
     </style>
-    <title>Document</title>
+    <title>Acrylkunst von Evita Nonnenmacher</title>
   </head>
   <body style="{% block addBodyStyle %}background-color:{{farbeHintergrund}}{% endblock addBodyStyle %}">
     <div class="mainHomeImg">
@@ -47,15 +48,26 @@
             {%block headerText2%}{%endblock headerText2%}
           </h1>
           <h1
-            style="color: {{farbeHeadNachname}}; filter: drop-shadow(1px 1px 0 {{farbeHintergrund}});"
+            style="color: {{farbeHeadNachname}}; filter: drop-shadow(1px 0px 1px black);"
             class="firstH1 secondH1"
           >
             {%block headerText3%}{%endblock headerText3%}
           </h1>
         </div>
       </div>
-
+      {% if galerie == True %}
+      <div class="galerieContainer">
+      {% for bild, height, width in bilderUndMase %}   
+      {% if width > height|multiply:1.3 %}
+      <img class="big galerieBild" src="{{bild.image}}" />  
+      {% else %}
+      <img class="galerieBild" src="{{bild.image}}" />
+      {% endif %} 
+      {% endfor %}
+      </div>
+      {% else %}
       <img class="{{HeadImgClass}}" src="{%block headerBild%}{%endblock headerBild%}" />
+      {% endif %}
       {% block content %}{% endblock content %}
     </div>
   </body>

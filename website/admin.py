@@ -5,8 +5,10 @@ from django.core.exceptions import ValidationError
 
 # Register your models here.
 
-#admin.site.register(BilderFestlegen)
-admin.site.register(Farben)
+
+class FarbenAdmin(admin.ModelAdmin):
+    list_display = ("area","farbcode",)
+admin.site.register(Farben, FarbenAdmin)
 admin.site.register(Texte)
 
 class MyModelAdminForm(forms.ModelForm):
@@ -15,7 +17,9 @@ class MyModelAdminForm(forms.ModelForm):
         fields = ('name', 'area', 'image', 'width', 'height')
 
 class BilderAdmin(admin.ModelAdmin):
-
+    list_display = ("name","area",)
+    ordering = ("name",)
+    search_fields = ("area", "name",)
     class Media:
         js = ('js/admin_field_visibility.js',)
     def get_fields(self, request, obj=None):

@@ -63,21 +63,8 @@ def index(request):
     context["h1"] = h1
     context["text"] = textmaker(homeText.text)
     context["home"] = True
-    navLinks = Farben.objects.get(area="Navbar_Verlinkungen")
-    #image = Image.open(bild.image)
-    #height = image.height
-    #width = image.width
-
-    #height = str(height)
-
-    #b = Bilder.objects.all()
-    #b = Bilder.objects.get(area = "header2")
     
-#    print(connection.queries)
-#    print( "b")
-#    print(b)
-#    cssFile = open("./website/static/website/bild.css", "w")
-#    cssFile.write("header{height:"+height+"px;}")
+    
     return render(request, 'index.html', context)
     
 
@@ -102,11 +89,27 @@ def about(request):
     context["about"] = True
     return render(request, 'about.html', context)
 def galerie(request):
+    bilder = BilderFestlegen.objects.filter(area="G")
+    context = variables()
+    height = []
+    width = []
 
-    bild = BilderFestlegen.objects.get(area="galerie")
+    for bild in bilder:
+        image = Image.open(bild.image)
+        height.append(str(image.height))
+        width.append(str(image.width))
 
-    context = {
-        "bild": bild.image,
-    }
+    bilderUndMase = zip(bilder, height, width)
+    
+    """  b = Bilder.objects.all()
+    b = Bilder.objects.get(area = "header2") """
+    
+
+    context["bilder"] = bilder
+    context["bilderUndMase"] = bilderUndMase
+    context["HeadTextClass"] = "AboutHeadText"
+    context["imgHeight"] = height
+    context["imgWidth"] = width
+    context["galerie"] = True
 
     return render(request, 'galerie.html', context)
