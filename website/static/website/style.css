@@ -252,12 +252,11 @@ nav a {
   width: 0;
   animation: 1.4s dNone ;
 }
+
 .thick{
+  background-color: rgb(216, 250, 255);
+  background-size: contain;
   width: 97%;
-}
-
-.imgContainer:hover {
-
 }
 
 .imgContainer:hover .hoverCurtain{
@@ -272,9 +271,6 @@ nav a {
   margin: auto;
 }
 
-.bname{
-  
-}
 
 .bheight, .bwidth, .bname{
   filter: drop-shadow(1px 1px 1px black)
