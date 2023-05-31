@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const heightField = document.getElementById("id_height");
 
   function toggleFields() {
-    if (areaField.value === "G") {
+    if (areaField.value === "Galerie-Bilder") {
       nameField.parentElement.parentElement.classList.remove("hidden");
       widthField.parentElement.parentElement.parentElement.classList.remove("hidden");
       heightField.parentElement.parentElement.parentElement.classList.remove("hidden");

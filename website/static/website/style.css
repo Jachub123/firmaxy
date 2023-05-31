@@ -253,10 +253,10 @@ nav a {
   animation: 1.4s dNone ;
 }
 
-.thick{
-  background-color: rgb(216, 250, 255);
+.thick{  
   background-size: contain;
   width: 97%;
+  
 }
 
 .imgContainer:hover .hoverCurtain{

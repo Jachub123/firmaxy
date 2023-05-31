@@ -89,7 +89,7 @@ def about(request):
     context["about"] = True
     return render(request, 'about.html', context)
 def galerie(request):
-    bilder = BilderFestlegen.objects.filter(area="G")
+    bilder = BilderFestlegen.objects.filter(area="Galerie-Bilder")
     context = variables()
     height = []
     width = []

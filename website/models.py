@@ -7,7 +7,7 @@ class BilderFestlegen(models.Model):
     bildArea =[ 
         ("HP", "Startseiten-Bilder"),
         ("AM", "Übermich-Bilder"),
-        ("G", "Galerie-Bilder"),
+        ("Galerie-Bilder", "Galerie-Bilder"),
     ]
 
     name = models.CharField(max_length = 20, primary_key=True, verbose_name="name")

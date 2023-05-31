@@ -17,9 +17,9 @@ class MyModelAdminForm(forms.ModelForm):
         fields = ('name', 'area', 'image', 'width', 'height')
 
 class BilderAdmin(admin.ModelAdmin):
-    list_display = ("name","area",)
+    list_display = ("name","area","width")
     ordering = ("name",)
-    search_fields = ("area", "name",)
+    search_fields = ("name","area","width")
     class Media:
         js = ('js/admin_field_visibility.js',)
     def get_fields(self, request, obj=None):
