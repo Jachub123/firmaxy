@@ -60,7 +60,7 @@ def index(request):
     context = variables()
     context["HeadTextClass"] = "HomeHeadText"
     context["HeadImgClass"] = "homeImg"
-    context["h1"] = h1
+    context["h1"] = h1.text
     context["text"] = textmaker(homeText.text)
     context["home"] = True
     
