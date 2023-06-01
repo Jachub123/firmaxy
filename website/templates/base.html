@@ -61,7 +61,7 @@
       <div class="galerieContainer">
         {% for bild, height, width in bilderUndMase %}   
         <a style="background-image:url('{{bild.image}}')" class="{% if width > height %}big{% endif %} imgContainer" href="{{bild.image}}" data-title="{{bild.name}}" data-lightbox="Galerie">
-          <img src="{{bild.image}}"/>          
+          {% comment %} <img src="{{bild.image}}"/>{% endcomment %}
           <div class="hoverCurtain">
             <span class="bname">{{bild.name}}</span>
             <span class="seperator"></span>
