@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nameField.value = "StartBild";
       } else if (areaField.value === "AM") {
         nameField.value = "ÜbermichBild";
+      } else if (areaField.value === "GE") {
+        nameField.value = "WohnzimmerBild";
       }
       nameField.parentElement.parentElement.classList.add("hidden");
       heightField.parentElement.parentElement.parentElement.classList.add("hidden");

@@ -8,7 +8,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{%static 'website/style.css' %}" />
-    <link rel="stylesheet" href="{%static 'website/lightbox.css' %}" />
+    {% comment %} <link rel="stylesheet" href="{%static 'website/lightbox.css' %}" /> {% endcomment %}
     
 
     {% comment %}
@@ -57,30 +57,13 @@
           </h1>
         </div>
       </div>
-      {% if galerie == True %}
-      <div class="galerieContainer">
-        {% for bild, height, width in bilderUndMase %}   
-        <a style="background-image:url('{{bild.image}}')" class="{% if width > height %}big{% endif %} imgContainer" href="{{bild.image}}" data-title="{{bild.name}}" data-lightbox="Galerie">
-          {% comment %} <img src="{{bild.image}}"/>{% endcomment %}
-          <div class="hoverCurtain">
-            <span class="bname">{{bild.name}}</span>
-            <span class="seperator"></span>
-            <span class="bwidth">{{bild.width }} cm </span>
-            <span> x</span> 
-            <span class="bheight"> {{ bild.height}} cm</span>
-          </div>
-
-      </a>
-         
-        {% endfor %}
-      </div>
-      {% else %}
+      {% if galerie != True %}
       <img class="{{HeadImgClass}}" src="{%block headerBild%}{%endblock headerBild%}" />
       {% endif %}
       {% block content %}{% endblock content %}
     </div>
-
-    <script src="{%static 'website/lightbox.js' %}" ></script>
+{% comment %} 
+    <script src="{%static 'website/lightbox.js' %}" ></script> {% endcomment %}
     <script src="{%static 'website/evita.js' %}" ></script>
   </body>
 </html>

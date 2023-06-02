@@ -1,2 +1,23 @@
-{%extends 'base.html' %}{%block headerIntro%}Meine Werke{%endblock headerIntro%} {%block headerText2%}Galerie
-{%endblock headerText2%} {%block headerText4%}Galerie {%endblock headerText4%} {%block headerText3%} Galerie{%endblock headerText3%} {%block headerBild%}{{bilder}} {%endblock headerBild%} {%block content%}{%endblock content%}
+{%extends 'base.html' %}{%block headerIntro%}Galerie{%endblock headerIntro%} {%block headerText2%}Meine Werke
+{%endblock headerText2%} {%block headerText4%}Meine Werke {%endblock headerText4%} {%block headerText3%} Meine Werke{%endblock headerText3%} {%block headerBild%}{{bilder}} {%endblock headerBild%} {%block content%}
+{% if galerie == True %}
+<div class="galerieContainer">
+  {% for bild, height, width in bilderUndMase %}   
+  <a style="background-image:url('{{bild.image}}')" class="{% if width > height %}big{% endif %} imgContainer" href="{{bild.name}}" >
+    {% comment %} <img src="{{bild.image}}"/>{% endcomment %}
+    <div class="hoverCurtain">
+      <span class="bname">{{bild.name}}</span>
+      <span class="seperator"></span>
+      <span class="bwidth">{{bild.width }} cm </span>
+      <span> x</span> 
+      <span class="bheight"> {{ bild.height}} cm</span>
+    </div>
+
+</a>
+   
+  {% endfor %}
+</div>
+{% else %}
+<img class="{{HeadImgClass}}" src="{{bilder}}" />
+{% endif %}
+{%endblock content%}

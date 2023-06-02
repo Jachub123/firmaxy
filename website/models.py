@@ -8,13 +8,15 @@ class BilderFestlegen(models.Model):
         ("HP", "Startseiten-Bilder"),
         ("AM", "Übermich-Bilder"),
         ("Galerie-Bilder", "Galerie-Bilder"),
+        ("GE", "Galerie-Wohnz-Hintergrund"),
     ]
 
     name = models.CharField(max_length = 20, primary_key=True, verbose_name="name")
-    area = models.CharField(max_length = 20, choices=bildArea, verbose_name="area")
+    area = models.CharField(max_length = 25, choices=bildArea, verbose_name="area")
     image = models.ImageField(null=False, blank=False, upload_to="images/", verbose_name="image")
     width = models.IntegerField(null=True, blank=True, verbose_name="width")
     height = models.IntegerField(null=True, blank=True, verbose_name="height")
+    desc = models.TextField(max_length = 2000, null=True, blank=True, verbose_name="beschreibung")
 
     class Meta:
         verbose_name = "Bild"

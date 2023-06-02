@@ -98,7 +98,7 @@ def galerie(request):
         image = Image.open(bild.image)
         height.append(str(image.height))
         width.append(str(image.width))
-
+        print(bild.image)
     bilderUndMase = zip(bilder, height, width)
     
     """  b = Bilder.objects.all()
@@ -113,3 +113,14 @@ def galerie(request):
     context["galerie"] = True
 
     return render(request, 'galerie.html', context)
+
+def singlePicView(request, name):
+    bild = BilderFestlegen.objects.get(name=name)
+    background = BilderFestlegen.objects.get(name="WohnzimmerBild")
+    print(background.image)
+    context = variables()
+    context["bild"] = bild
+    context["HeadTextClass"] = "singlePicHead"
+    context["HeadImgClass"] = "singlePic"
+
+    return render(request, 'einzelBild.html', context)

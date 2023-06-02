@@ -1,0 +1,7 @@
+{%extends 'base.html' %}{%block headerIntro%}Galerie{%endblock headerIntro%} {%block headerText2%}{{bild.name}}
+{%endblock headerText2%} {%block headerText4%}{{bild.name}} {%endblock headerText4%} {%block headerText3%} {{bild.name}}{%endblock headerText3%} 
+{%block headerBild%}{{bild.image}}{%endblock headerBild%} 
+{%block content%}
+<div class="descSinglePic"><h3>Acryl auf Leinwand </h3><p>{{bild.width}} cm x {{bild.height}} cm</p> <h3>{{bild.name}}</h3> <p class="descText">{{bild.desc}}</p></div>
+
+{%endblock content%}

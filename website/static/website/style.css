@@ -221,6 +221,8 @@ nav a {
   position: relative;
   width: fit-content;
   width: 85%;
+  min-height: 30vh;
+  height: 70vh;
   background-position: center bottom;
   background-repeat: no-repeat; 
   -webkit-background-size: contain;
@@ -362,7 +364,6 @@ h1 {
   padding-top: 1.25rem;
   grid-column: 6;
   justify-content: flex-end;
-
 }
 
 .colorstripes div {
@@ -421,7 +422,37 @@ article.bio {
   transform: translateY(40%);
 }
 
+
+.singlePicHead{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  grid-column: 2/6;
+  grid-row: 3;
+  
+}
+
+.descSinglePic p{
+  margin: 0;
+  line-height: 2rem;
+}
+
+p.descText{
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.descSinglePic{
+  margin: 0;
+  grid-row: 4;
+  grid-column: 1;
+  align-self: flex-start;
+  padding: 0 2rem;
+}
+
 img.homeImg,
+img.singlePic,
 .AboutHeadImg,
 .galerieContainer {
   width: 100%;
@@ -429,6 +460,11 @@ img.homeImg,
   grid-row: 4/7;
   align-self: start;
 }
+
+img.singlePic{
+  grid-column: 2/6;
+}
+
 .galerieContainer {
   grid-column: 1/8;
   }
@@ -439,10 +475,14 @@ img.homeImg,
 @media (min-width: 768px) {
   .imgContainer {
     width: 40%;
+    height: 45rem;
   }
 }
 
 @media (min-width: 992px) {
+  .colorstripes {
+    align-self: start;
+  }
   .galerieContainer{
     row-gap: 4rem;
   }
