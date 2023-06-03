@@ -221,14 +221,13 @@ nav a {
   position: relative;
   width: fit-content;
   width: 85%;
-  min-height: 30vh;
-  height: 70vh;
+  height: 50vh;
   background-position: center bottom;
   background-repeat: no-repeat; 
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   transition: width 0.7s ease;
 }
 
@@ -310,9 +309,9 @@ h1 {
   padding: 2rem 0 1rem 0;
 }
 
-.border {
+/* .border {
   filter: drop-shadow(1px 1px 0 black);
-}
+} */
 
 .evita .overlay {
   top: 0;
@@ -332,6 +331,7 @@ h1 {
 
 .HomeHeadText,
 .AboutHeadText {
+  justify-self: center;
   grid-column: 3/7;
   grid-row: 1/3;
 }
@@ -341,7 +341,8 @@ h1 {
   flex-flow: column;
 }
 
-.AboutHeadText {
+.AboutHeadText,
+.HomeHeadText {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -397,17 +398,16 @@ h4 {
   margin-bottom: 2rem;
 }
 
-article.bio > * {
-  height: 25%;
+article.bio {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
-
 article.bio * {
   margin: 0;
 }
-article.bio {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+
 .aboutImgLeft {
   left: 0;
 }
@@ -443,43 +443,88 @@ p.descText{
   font-size: 0.8rem;
 }
 
+.mainHomeImg > .descSinglePic{
+  display: none;
+}
 .descSinglePic{
   margin: 0;
   grid-row: 4;
   grid-column: 1;
   align-self: flex-start;
-  padding: 0 2rem;
+  padding-right: 2rem;
+  width: auto;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
 }
 
 img.homeImg,
 img.singlePic,
 .AboutHeadImg,
-.galerieContainer {
+.headImgAndTextContainer {
   width: 100%;
   grid-column: 3/7;
   grid-row: 4/7;
-  align-self: start;
+  align-self: center;
+}
+
+.singlePicHead + .headImgAndTextContainer > .headImgAndTextContainerInner{
+  position: relative;
+  width: fit-content;
+}
+
+.headImgAndTextContainerInner{
+  position: relative;
+  width: 100%;
+}
+
+.headImgAndTextContainer{
+  display: flex;  
+  height: 100%;
+  flex-flow: column;
+  align-items: center;
+  grid-column: 1/7;
 }
 
 img.singlePic{
-  grid-column: 2/6;
+  max-height: 100vh;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  grid-column: 3;
 }
 
-.galerieContainer {
-  grid-column: 1/8;
-  }
 .AboutHeadImg {
   grid-row: 4/7;
 }
 
 @media (min-width: 768px) {
+  article.bio > .bio {
+    height: 20%;
+    width: 45%;
+  }
+  article.bio {
+    gap: 6%;
+    height: 55vh;
+    min-height: 20rem;
+  }
   .imgContainer {
-    width: 40%;
-    height: 45rem;
+    width: 60%;
+    height: 30rem;
   }
 }
 
 @media (min-width: 992px) {
+
+  .singlePic +
+  .descSinglePic{
+    display: none;
+  }
+  .mainHomeImg > .descSinglePic{
+    display: block;
+    position: static;
+    transform: translateY(0%);
+  }
   .colorstripes {
     align-self: start;
   }
@@ -489,10 +534,18 @@ img.singlePic{
   .galerieContainer{
     row-gap: 4rem;
   }
-  .AboutHeadText {
+  .AboutHeadText,
+  .HomeHeadText {
     display: block;
   }
-
+  .headImgAndTextContainer,
+  .singlePicHead{
+    grid-column: 2/7;
+  }
+  .HomeHeadText,
+  .AboutHeadText {
+    grid-column: 2/6;
+    }
   .hoverCurtain{
     opacity: 0;
     bottom: 0;
@@ -531,7 +584,7 @@ img.singlePic{
   img.homeImg,
   .AboutHeadImg,
   .HomeHeadText {
-    grid-column: 3/7;
+    grid-column: 2/6;
   }
   .mainHomeImg {
     display: grid;
@@ -547,10 +600,7 @@ img.singlePic{
   h1 {
     margin-bottom: -1.2rem;
   }
-  .HomeHeadText,
-  .AboutHeadText > *:nth-child(1n) {
-    padding-left: 15%;
-  }
+
   .headerIntro {
     margin-top: 2rem;
     margin-bottom: -2rem;
@@ -566,11 +616,18 @@ img.singlePic{
   .HomeHeadText,
   .AboutHeadImg,
   .AboutHeadText,
-  .galerieContainer,
+  .headImgAndTextContainer,
   img.homeImg {
     grid-column: 3/6;
   }
 
+.singlePicHead + .headImgAndTextContainer{
+  grid-column: 2/6;
+  align-self: start;
+}
+.singlePicHead{
+  grid-column: 2/6;
+}
   .text {
     grid-column: 3/6;
   }
