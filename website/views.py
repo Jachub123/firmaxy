@@ -115,11 +115,37 @@ def galerie(request):
     return render(request, 'galerie.html', context)
 
 def singlePicView(request, name):
+    print(f"LOOOOOOOOOL: {request.GET.get('wohn','')}")
     bild = BilderFestlegen.objects.get(name=name)
     background = BilderFestlegen.objects.get(name="WohnzimmerBild")
-    print(background.image)
+    
     context = variables()
-    context["bild"] = bild
+    context["bildName"] = bild.name
+    context["bildWidth"] = bild.width
+    context["bildHeight"] = bild.height
+    context["bildDesc"] = bild.desc
+
+    if request.GET.get('wohn','') == "true":
+        bildSize = Image.open(bild.image)
+        if bildSize.height > bildSize.width:
+            context["widthOrHeight"] = "height"
+        else:
+            context["widthOrHeight"] = "width"
+        context["bild"] = background
+        context["wandBild"] = bild.image
+        context["jumpTo"] = {                            
+                            "target": "last",
+                            "class": "last",
+                             "bild" : bild.name+"#scroll"
+                             }
+        
+    else:
+        context["bild"] = bild
+        context["jumpTo"] = {                            
+                            "target": "next",
+                            "bild": "?wohn=true#scroll"
+                            }
+
     context["HeadTextClass"] = "singlePicHead"
     context["HeadImgClass"] = "singlePic"
 

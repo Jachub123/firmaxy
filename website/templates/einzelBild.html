@@ -1,8 +1,15 @@
-{%extends 'base.html' %}{%block headerIntro%}Galerie{%endblock headerIntro%} {%block headerText2%}{{bild.name}}
-{%endblock headerText2%} {%block headerText4%}{{bild.name}} {%endblock headerText4%} {%block headerText3%} {{bild.name}}{%endblock headerText3%} 
+{%extends 'base.html' %}{%block headerIntro%}Galerie{%endblock headerIntro%} {%block headerText2%}{{bildName}}
+{%endblock headerText2%} {%block headerText4%}{{bildName}} {%endblock headerText4%} {%block headerText3%} {{bildName}}{%endblock headerText3%} 
 {%block headerBild%}{{bild.image}}{%endblock headerBild%} 
 {%block content%}
-<div class="descSinglePic"><h3>Acryl auf Leinwand </h3><p>{{bild.width}} cm x {{bild.height}} cm</p> <h3>{{bild.name}}</h3> <p class="descText">{{bild.desc}}</p></div>
+<div class="descSinglePic"><h3>Acryl auf Leinwand </h3><p>{{bildWidth}} cm x {{bildHeight}} cm</p> <h3>{{bildName}}</h3> <p class="descText">{{bildDesc}}</p></div>
 
 {%endblock content%}
-{% block imgDescription %}<div class="descSinglePic"><h3>Acryl auf Leinwand </h3><p>{{bild.width}} cm x {{bild.height}} cm</p> <h3>{{bild.name}}</h3> <p class="descText">{{bild.desc}}</p></div>{% endblock imgDescription %}
+{% block imgDescription %}
+<div class="descSinglePic">
+    <h3>Acryl auf Leinwand </h3>
+    <p>{{bildWidth}} cm x {{bildHeight}} cm</p>
+    <h3>{{bildName}}</h3>
+    <p class="descText">{{bildDesc}}</p>
+</div>
+{% endblock imgDescription %}
