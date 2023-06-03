@@ -504,6 +504,14 @@ img.singlePic,
   color: black;
 }
 
+.block{
+  display: block;
+}
+
+.none{
+  display: none;
+}
+
 #wandBild img{
   box-shadow: 1px 1px 3px black;
 }
