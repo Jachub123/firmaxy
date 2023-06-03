@@ -39,6 +39,7 @@ def variables():
     "farbeStripe2" : "#"+stripe2.farbcode,
     "farbeStripe3" : "#"+stripe3.farbcode,
     "farbeStripe4" : "#"+stripe4.farbcode,
+    "none" : "none",
     }
     return context
     
@@ -111,21 +112,23 @@ def galerie(request):
     context["imgHeight"] = height
     context["imgWidth"] = width
     context["galerie"] = True
+    
 
     return render(request, 'galerie.html', context)
 
 def singlePicView(request, name):
-    print(f"LOOOOOOOOOL: {request.GET.get('wohn','')}")
     bild = BilderFestlegen.objects.get(name=name)
     background = BilderFestlegen.objects.get(name="WohnzimmerBild")
     
     context = variables()
+    
     context["bildName"] = bild.name
     context["bildWidth"] = bild.width
     context["bildHeight"] = bild.height
     context["bildDesc"] = bild.desc
-
+    context["none"] = "block"
     if request.GET.get('wohn','') == "true":
+        
         bildSize = Image.open(bild.image)
         if bildSize.height > bildSize.width:
             context["widthOrHeight"] = "height"
