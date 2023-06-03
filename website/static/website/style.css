@@ -274,10 +274,6 @@ nav a {
   padding: 1rem 0.5rem;
 }
 
-.bwidth{
-
-}
-
 nav a:hover {
   animation: 0.5s colorchange;
   background-image: linear-gradient(90deg, var(--colorTextgrad2) 48%, var(--colorTextgrad1) 70%);
